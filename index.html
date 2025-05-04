@@ -3,51 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kicks Football Academy</title>
+  <title>FC stars Football Academy</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body, .section, .hero, .navbar, footer {
-      transition: all 1s ease-in-out;
-      opacity: 0;
-    }
-    
-    body.page-loaded, .section.page-loaded, .hero.page-loaded, .navbar.page-loaded, footer.page-loaded {
-      opacity: 1;
-    }
-    
-    ::-webkit-scrollbar {
-      width: 12px;
-  }
-  ::-webkit-scrollbar-track {
-      background: black;
-  }
-  ::-webkit-scrollbar-thumb {
-      background-color: var(--primary);
-      border-radius: 6px;
-      border: 3px solid black;}
     :root {
       --primary: rgb(207, 197, 3);
       --background: rgba(19, 44, 84, 1);
       --text: #ffffff;
       --accent: #162c4d;
     }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--background);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
+
+    /* INTRO SCREEN */
+    #intro-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(19, 44, 84, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      backdrop-filter: blur(8px);
+      transition: opacity 1s ease-in-out;
+    }
+
+    #intro-screen img {
+      width: 200px;
+      height: auto;
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    #intro-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body.loaded .section,
+    body.loaded .hero,
+    body.loaded .navbar,
+    body.loaded footer {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .section,
+    .hero,
+    .navbar,
+    footer {
+      opacity: 0;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: black;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 6px;
+      border: 3px solid black;
+    }
+
     .navbar {
       background-color: var(--accent);
     }
+
     .navbar-nav .nav-link {
       color: var(--text) !important;
       font-weight: bold;
     }
+
     .navbar-nav .nav-link:hover {
       color: var(--primary) !important;
     }
+
     .cta-btn {
       background: var(--primary);
       color: white;
@@ -55,9 +101,11 @@
       border-radius: 5px;
       font-weight: bold;
     }
+
     .cta-btn:hover {
       background: #c1b803;
     }
+
     .hero {
       text-align: center;
       padding: 6rem 2rem;
@@ -65,6 +113,7 @@
       color: white;
       position: relative;
     }
+
     .hero::before {
       content: '';
       position: absolute;
@@ -75,21 +124,25 @@
       background: rgba(0, 0, 0, 0.6);
       z-index: 0;
     }
+
     .hero-content {
-      
       z-index: 9999;
       max-width: 800px;
       margin: auto;
+      position: relative;
     }
+
     .hero h1 {
       font-size: 2.8rem;
       margin-bottom: 1rem;
     }
+
     .hero p.subheading {
       color: var(--primary);
       font-size: 1.2rem;
       margin-bottom: 1.5rem;
     }
+
     .quote-section {
       background: rgba(0, 0, 0, 0.8);
       max-width: 500px;
@@ -98,6 +151,7 @@
       border-left: 4px solid var(--primary);
       font-style: italic;
     }
+
     .stats {
       display: flex;
       justify-content: center;
@@ -105,28 +159,38 @@
       margin-top: 2rem;
       font-size: 2rem;
     }
+
     .stats span {
       display: block;
       font-size: 1rem;
       color: var(--primary);
     }
+
     .section {
       padding: 4rem 2rem;
       text-align: center;
     }
+
     .section h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
       color: var(--primary);
     }
+
     .section p {
       max-width: 600px;
       margin: auto;
       font-size: 1.1rem;
     }
-    .programs, .contact {
+
+    
+    .contact {
       background-color: var(--accent);
     }
+    .programs{
+      background-color: var(--primary);
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -134,17 +198,19 @@
       color: var(--text);
       font-size: 0.9rem;
     }
-
-    
   </style>
 </head>
 <body>
 
+  <!-- Intro Screen -->
+  <div id="intro-screen">
+    <img src="logo without bg.png" alt="Logo" />
+  </div>
+
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="logo without bg.png"  height="60">
-      </a>
+      <a class="navbar-brand" href="#"><img src="logo without bg.png" height="60" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -166,15 +232,12 @@
     </div>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-content" >
-      <p class="subheading">
-        <i class="fas fa-futbol"></i> Best Football Academy in Town
-      </p>
+    <div class="hero-content">
+      <p class="subheading"><i class="fas fa-futbol"></i> Best Football Academy in Town</p>
       <h1>Every Kick Counts, Every Dream Takes Flight</h1>
-      <div class="quote-section">
-        “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.”
-      </div>
+      <div class="quote-section">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.”</div>
       <div class="stats">
         <div>0+<span>Years</span></div>
         <div>0+<span>Trophies</span></div>
@@ -188,7 +251,7 @@
   </section>
 
   <section id="programs" class="section programs">
-    <h2 style=" color: var(--primary);">Our Programs</h2>
+    <h2 style="color: #162c4d;">Our Programs</h2>
     <p>From beginner to elite, we offer tailored training programs for kids and teens to master their skills and compete at the highest levels.</p>
   </section>
 
@@ -203,17 +266,23 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
- 
+    // Hide intro after 3 seconds
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('intro-screen').classList.add('fade-out');
+        document.body.classList.add('loaded');
+      }, 3000);
+    });
+
     // Animate stats on scroll
     const stats = document.querySelectorAll('.stats div');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           stats.forEach((el, i) => {
-            const target = i === 0 ? 7 : 150; // Adjust values as needed
+            const target = i === 0 ? 7 : 300;
             let current = 0;
-            const increment = target / 100; // Number of steps
-
+            const increment = target / 100;
             const interval = setInterval(() => {
               current += increment;
               if (current >= target) {
@@ -223,8 +292,7 @@
               el.innerHTML = `${Math.floor(current)}+<span>${i === 0 ? 'Years' : 'Trophies'}</span>`;
             }, 30);
           });
-
-          observer.disconnect(); // Stop observing after animation
+          observer.disconnect();
         }
       });
     }, { threshold: 0.5 });
@@ -232,6 +300,5 @@
     const statsSection = document.querySelector('.stats');
     if (statsSection) observer.observe(statsSection);
   </script>
-
 </body>
 </html>
